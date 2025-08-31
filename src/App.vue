@@ -1,12 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gray-100 p-6">
+  <div style="min-height: 100vh; background-color: #f0f1edff; padding: 1.5rem;">
     <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6">
       <h1 class="text-3xl font-extrabold text-center text-green-700 mb-6">
         Workout & Expense Tracker
       </h1>
 
-      <!-- Enhanced Tabs -->
+      <!-- Tabs -->
       <div class="flex justify-center gap-6 mb-8">
+        <!-- Fitness Button -->
         <button
           @click="tab = 'fitness'"
           :style="{
@@ -29,6 +30,8 @@
           <span style="font-size: 1.25rem;">🏋️</span>
           <span style="font-weight: bold; font-size: 1rem;">Fitness</span>
         </button>
+
+        <!-- Finance Button -->
         <button
           @click="tab = 'finance'"
           :style="{
@@ -49,7 +52,7 @@
           onmouseout="this.style.transform = 'scale(1)'"
         >
           <span style="font-size: 1.25rem;">💰</span>
-           <span style="font-weight: bold; font-size: 1rem;">Finance</span>
+          <span style="font-weight: bold; font-size: 1rem;">Finance</span>
         </button>
       </div>
 
@@ -61,6 +64,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from "vue"
