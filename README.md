@@ -1,5 +1,5 @@
 ## Project title 
-FITNESS AND FINANCE TRACKER
+WORKOUT & EXPENSE TRACKER
 
 ## 📌 Description
 Aplikasi berbasis web untuk mencatat aktivitas olahraga (Fitness) dan pengeluaran (Finance) dalam satu tempat.  
