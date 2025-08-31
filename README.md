@@ -12,13 +12,13 @@ Aplikasi berbasis web untuk mencatat aktivitas olahraga (Fitness) dan pengeluara
 
 ## ✨ Features
 ### 🏋️ Fitness Logs
-- Mencatat jenis latihan (contoh: push-up, lari, angkat beban).  
-- Menyimpan detail tambahan seperti durasi, jumlah repetisi, atau catatan progres.  
-- Tampilan log aktivitas agar pengguna bisa memantau perkembangan latihan.  
+- Mencatat jenis latihan (contoh: push-up, sit-up, squat, lunge, pilates).
+- Menyimpan detail tambahan seperti tanggal, kategori, nama latihan, dan repetisi/durasi.
+- Tampilan log aktivitas agar pengguna bisa memantau perkembangan latihan. 
 ### 💰 Finance Logs
-- Mencatat pengeluaran harian dengan kategori (makanan, transportasi, hiburan, dll.).  
-- Input jumlah, deskripsi, dan tanggal transaksi.  
-- Daftar pengeluaran ditampilkan dengan rapi sehingga mudah dipantau. 
+- Mencatat pengeluaran harian dengan kategori (membership gym, alat gym, matras, suplemen, dll.).
+- Input tanggal transaksi, kategori, jenis pengeluaran, dan nominal.
+- Daftar pengeluaran ditampilkan dengan rapi sehingga mudah dipantau.
 ### 🎨 Antarmuka & Pengalaman Pengguna
 - Navigasi tab interaktif: mudah berpindah antara **Fitness** dan **Finance**.  
 - Desain responsif (bisa digunakan di layar desktop maupun mobile).  
