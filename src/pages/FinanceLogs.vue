@@ -1,83 +1,144 @@
 <template>
   <div>
-    <h2 class="text-xl font-bold mb-4 text-green-700">💰 Catatan Keuangan</h2>
+    <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: #1f2937; display: flex; align-items: center; gap: 0.75rem;">
+      <span style="font-size: 2rem;">💰</span>
+      Catatan Keuangan
+    </h2>
 
-    <!-- Form Tambah Pengeluaran -->
-    <form @submit.prevent="addExpense" class="card bg-base-100 shadow p-4 mb-4">
-      <div class="form-control mb-3">
-        <label class="label"><span class="label-text">Kategori</span></label>
-        <select v-model="newExpense.category" @change="updateItems" class="select select-bordered w-full">
-          <option value="" disabled>Pilih kategori</option>
-          <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
-        </select>
-      </div>
+    <!-- Modern Form -->
+    <form @submit.prevent="addExpense" style="margin-bottom: 2rem; background: linear-gradient(135deg, #eff6ff, #e0e7ff); padding: 1.5rem; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #dbeafe;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+  <div>
+    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Tanggal</label>
+    <input v-model="newExpense.date" type="date"
+      style="width: 90%; border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 0.75rem 1rem; background: white; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: all 0.2s;"
+      onfocus="this.style.outline='none'; this.style.borderColor='#60a5fa'; this.style.boxShadow='0 0 0 3px rgba(96, 165, 250, 0.1)';"
+      onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 1px 2px rgba(0, 0, 0, 0.05)';" />
+  </div>
 
-      <div class="form-control mb-3">
-        <label class="label"><span class="label-text">Jenis Pengeluaran</span></label>
-        <select v-model="newExpense.item" class="select select-bordered w-full">
-          <option value="" disabled>Pilih pengeluaran</option>
-          <option v-for="item in itemsForCategory" :key="item" :value="item">{{ item }}</option>
-        </select>
-      </div>
+  <div>
+    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Kategori</label>
+    <select v-model="newExpense.category" @change="updateItems"
+      style="width: 100%; border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 0.75rem 1rem; background: white; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: all 0.2s;"
+      onfocus="this.style.outline='none'; this.style.borderColor='#60a5fa'; this.style.boxShadow='0 0 0 3px rgba(96, 165, 250, 0.1)';"
+      onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 1px 2px rgba(0, 0, 0, 0.05)';">
+      <option value="" disabled>Pilih kategori</option>
+      <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
+    </select>
+  </div>
 
-      <div class="form-control mb-3">
-        <label class="label"><span class="label-text">Nominal</span></label>
-        <input v-model.number="newExpense.amount" type="number" placeholder="Rp" class="input input-bordered w-full" />
-      </div>
+  <div>
+    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Jenis Pengeluaran</label>
+    <select v-model="newExpense.item"
+      style="width: 100%; border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 0.75rem 1rem; background: white; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: all 0.2s;"
+      onfocus="this.style.outline='none'; this.style.borderColor='#60a5fa'; this.style.boxShadow='0 0 0 3px rgba(96, 165, 250, 0.1)';"
+      onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 1px 2px rgba(0, 0, 0, 0.05)';">
+      <option value="" disabled>Pilih pengeluaran</option>
+      <option v-for="item in itemsForCategory" :key="item" :value="item">{{ item }}</option>
+    </select>
+  </div>
 
-      <button class="btn btn-success w-full">+ Tambah Pengeluaran</button>
+  <div>
+    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Nominal(Rp)</label>
+    <input v-model.number="newExpense.amount" type="number" placeholder="Masukkan nominal..."
+      style="width: 90%; border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 0.75rem 1rem; background: white; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: all 0.2s;"
+      onfocus="this.style.outline='none'; this.style.borderColor='#60a5fa'; this.style.boxShadow='0 0 0 3px rgba(96, 165, 250, 0.1)';"
+      onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 1px 2px rgba(0, 0, 0, 0.05)';" />
+  </div>
+</div>
+
+
+      <button
+        type="submit"
+        style="width: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 600; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: all 0.2s; border: none; cursor: pointer;"
+        onmouseover="this.style.background='linear-gradient(to right, #2563eb, #1d4ed8)'; this.style.transform='scale(1.02)';"
+        onmouseout="this.style.background='linear-gradient(to right, #3b82f6, #2563eb)'; this.style.transform='scale(1)';"
+        onmousedown="this.style.transform='scale(0.98)';"
+        onmouseup="this.style.transform='scale(1.02)';"
+      >
+        <span style="font-size: 1.25rem; margin-right: 0.5rem;">+</span>
+        Tambah Pengeluaran
+      </button>
     </form>
 
-    <!-- Filter Periode -->
-    <div class="flex items-center mb-4">
-      <label class="mr-2 font-medium">Tampilkan data:</label>
-      <select v-model="summaryPeriod" class="select select-bordered w-48">
-        <option value="all">Semua</option>
-        <option value="week">Per Minggu</option>
-        <option value="month">Per Bulan</option>
-        <option value="year">Per Tahun</option>
-      </select>
-    </div>
+  <!-- Modern Filter -->
+<div style="display: flex; align-items: center; margin-bottom: 1.5rem; background: white; padding: 1rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid #f3f4f6;">
+  <label style="font-size: 0.875rem; font-weight: 600; color: #374151; margin-right: 1rem;">Tampilkan data:</label>
+  <select v-model="summaryPeriod" 
+    style="border: 2px solid #d1d5db; border-radius: 0.5rem; padding: 0.5rem 1rem; background: #e3e3e3; color: #374151; font-weight: 500; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: all 0.2s;"
+    onfocus="this.style.outline='none'; this.style.borderColor='#60a5fa'; this.style.boxShadow='0 0 0 3px rgba(96, 165, 250, 0.2)';"
+    onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='0 1px 2px rgba(0, 0, 0, 0.05)';">
+    <option value="all">Semua</option>
+    <option value="week">Per Minggu</option>
+    <option value="month">Per Bulan</option>
+    <option value="year">Per Tahun</option>
+  </select>
+</div>
 
-    <!-- Table -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-300 bg-white shadow rounded-lg">
-        <thead class="bg-green-200 border-b border-gray-300">
+
+
+    <!-- Modern Table -->
+    <div style="overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb;">
+      <table style="width: 100%; background: white; border-collapse: collapse;">
+        <thead style="background: linear-gradient(to right, #3b82f6, #2563eb);">
           <tr>
-            <th class="py-2 px-4 text-left border-r border-gray-300">Tanggal</th>
-            <th class="py-2 px-4 text-left border-r border-gray-300">Kategori</th>
-            <th class="py-2 px-4 text-left border-r border-gray-300">Jenis Pengeluaran</th>
-            <th class="py-2 px-4 text-left border-r border-gray-300">Nominal</th>
-            <th class="py-2 px-4 text-left">Aksi</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; color: white; font-weight: 600;">Tanggal</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; color: white; font-weight: 600;">Kategori</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; color: white; font-weight: 600;">Jenis Pengeluaran</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; color: white; font-weight: 600;">Nominal(Rp)</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; color: white; font-weight: 600;">Aksi</th>
           </tr>
         </thead>
         <tbody>
           <template v-for="(group, gIndex) in groupedExpenses" :key="gIndex">
             <!-- Header Periode -->
-            <tr class="bg-green-100 font-semibold">
-              <td class="py-2 px-4 border-r border-gray-300" colspan="5">{{ group.label }}</td>
-            </tr>
-
-            <!-- Data Pengeluaran -->
-            <tr v-for="(expense, index) in group.items" :key="index" class="border-b border-gray-300 hover:bg-green-50">
-              <td class="py-2 px-4 border-r border-gray-300">{{ expense.date }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ expense.category }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ expense.item }}</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ formatRupiah(expense.amount) }}</td>
-              <td class="py-2 px-4">
-                <button @click="deleteExpense(expense.id)" class="text-red-500 hover:text-red-700">Hapus</button>
+            <tr style="background: linear-gradient(to right, #dbeafe, #e0e7ff);">
+              <td style="padding: 0.75rem 1.5rem; font-weight: bold; color: #1e40af;" colspan="5">
+                <span style="font-size: 1.125rem;">📅 {{ group.label }}</span>
               </td>
             </tr>
 
-            <!-- Total Periode di bawah tiap grup -->
-            <tr class="bg-green-200 font-semibold">
-              <td class="py-2 px-4 border-r border-gray-300" colspan="3">Total Periode</td>
-              <td class="py-2 px-4 border-r border-gray-300">{{ formatRupiah(group.total) }}</td>
-              <td class="py-2 px-4"></td>
+            <!-- Data Pengeluaran -->
+            <tr v-for="(expense, index) in group.items" :key="index" 
+                style="border-bottom: 1px solid #f3f4f6; transition: all 0.2s;"
+                onmouseover="this.style.background='linear-gradient(to right, #eff6ff, #e0e7ff)';"
+                onmouseout="this.style.background='white';">
+              <td style="padding: 1rem 1.5rem; color: #374151; font-weight: 500;">{{ expense.date }}</td>
+              <td style="padding: 1rem 1.5rem; color: #1f2937; font-weight: 600;">{{ expense.category }}</td>
+              <td style="padding: 1rem 1.5rem; color: #374151;">{{ expense.item }}</td>
+              <td style="padding: 1rem 1.5rem; color: #1f2937; font-weight: bold;">{{ formatRupiah(expense.amount) }}</td>
+              <td style="padding: 1rem 1.5rem;">
+                <button 
+                  @click="deleteExpense(expense.id)" 
+                  style="background: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 600; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.2s; border: none; cursor: pointer;"
+                  onmouseover="this.style.background='#dc2626'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.background='#ef4444'; this.style.transform='scale(1)';"
+                  onmousedown="this.style.transform='scale(0.95)';"
+                  onmouseup="this.style.transform='scale(1.05)';"
+                >
+                  Hapus
+                </button>
+              </td>
+            </tr>
+
+            <!-- Total Periode -->
+            <tr style="background: linear-gradient(to right, #bbf7d0, #a7f3d0);">
+              <td style="padding: 0.75rem 1.5rem; font-weight: bold; color: #065f46;" colspan="3">
+                <span style="font-size: 1.125rem;">💵 Total Periode</span>
+              </td>
+              <td style="padding: 0.75rem 1.5rem; font-weight: bold; color: #065f46; font-size: 1.125rem;">{{ formatRupiah(group.total) }}</td>
+              <td style="padding: 0.75rem 1.5rem;"></td>
             </tr>
           </template>
         </tbody>
       </table>
+    </div>
+
+    <!-- Empty State -->
+    <div v-if="!groupedExpenses.length" style="text-align: center; padding: 3rem; background: linear-gradient(135deg, #f9fafb, #f3f4f6); border-radius: 1rem; border: 2px dashed #d1d5db;">
+      <div style="font-size: 4rem; margin-bottom: 1rem;">📊</div>
+      <h3 style="font-size: 1.25rem; font-weight: 600; color: #4b5563; margin-bottom: 0.5rem;">Belum ada data pengeluaran</h3>
+      <p style="color: #6b7280;">Mulai tambahkan pengeluaran untuk melihat laporan keuangan Anda</p>
     </div>
   </div>
 </template>
@@ -92,19 +153,22 @@ const itemsByCategory = {
 }
 
 const expenses = ref([])
-const newExpense = ref({ category: "", item: "", amount: null })
+const newExpense = ref({ category: "", item: "", amount: null, date: "" })
 const itemsForCategory = ref([])
 const summaryPeriod = ref("all")
 
 onMounted(() => {
   const saved = localStorage.getItem("expenses")
   if (saved) {
-    // pastikan semua data punya rawDate valid
     expenses.value = JSON.parse(saved).map(e => ({
       ...e,
       rawDate: e.rawDate || new Date().toISOString()
     }))
   }
+  
+  // Set default date to today
+  const today = new Date().toISOString().split('T')[0]
+  newExpense.value.date = today
 })
 
 watch(expenses, (val) => {
@@ -117,18 +181,20 @@ const updateItems = () => {
 }
 
 const addExpense = () => {
-  if (!newExpense.value.category || !newExpense.value.item || !newExpense.value.amount) return
-  const today = new Date()
-  const formattedDate = `${today.getDate().toString().padStart(2,'0')}/${(today.getMonth()+1).toString().padStart(2,'0')}/${today.getFullYear()}`
+  if (!newExpense.value.category || !newExpense.value.item || !newExpense.value.amount || !newExpense.value.date) return
+  
+  const selectedDate = new Date(newExpense.value.date)
+  const formattedDate = `${selectedDate.getDate().toString().padStart(2,'0')}/${(selectedDate.getMonth()+1).toString().padStart(2,'0')}/${selectedDate.getFullYear()}`
   const id = Date.now()
+  
   expenses.value.push({ 
     ...newExpense.value, 
-    amount: Number(newExpense.value.amount), // pastikan number
+    amount: Number(newExpense.value.amount),
     date: formattedDate, 
-    rawDate: today.toISOString(), 
+    rawDate: selectedDate.toISOString(), 
     id 
   })
-  newExpense.value = { category: "", item: "", amount: null }
+  newExpense.value = { category: "", item: "", amount: null, date: "" }
   itemsForCategory.value = []
 }
 
@@ -173,4 +239,3 @@ const groupedExpenses = computed(() => {
   return Object.values(groups)
 })
 </script>
-

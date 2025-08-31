@@ -5,19 +5,51 @@
         Workout & Expense Tracker
       </h1>
 
-      <!-- Tabs -->
-      <div class="flex justify-center gap-4 mb-6">
+      <!-- Enhanced Tabs -->
+      <div class="flex justify-center gap-6 mb-8">
         <button
           @click="tab = 'fitness'"
-          :class="tab === 'fitness' ? activeTab : inactiveTab"
+          :style="{
+            transition: 'all 0.3s',
+            transform: 'scale(1)',
+            padding: '1rem 1.5rem',
+            borderRadius: '0.5rem',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            border: '2px solid #d1d5db',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            background: tab === 'fitness' ? 'linear-gradient(to right, #22c55e, #16a34a)' : '#f9fafb',
+            color: tab === 'fitness' ? 'white' : '#374151',
+            borderColor: tab === 'fitness' ? '#4ade80' : '#d1d5db'
+          }"
+          onmouseover="this.style.transform = 'scale(1.05)'"
+          onmouseout="this.style.transform = 'scale(1)'"
         >
-          🏋️ Fitness
+          <span style="font-size: 1.25rem;">🏋️</span>
+          <span style="font-weight: bold; font-size: 1rem;">Fitness</span>
         </button>
         <button
           @click="tab = 'finance'"
-          :class="tab === 'finance' ? activeTab : inactiveTab"
+          :style="{
+            transition: 'all 0.3s',
+            transform: 'scale(1)',
+            padding: '1rem 1.5rem',
+            borderRadius: '0.5rem',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            border: '2px solid #d1d5db',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            background: tab === 'finance' ? 'linear-gradient(to right, #22c55e, #16a34a)' : '#f9fafb',
+            color: tab === 'finance' ? 'white' : '#374151',
+            borderColor: tab === 'finance' ? '#4ade80' : '#d1d5db'
+          }"
+          onmouseover="this.style.transform = 'scale(1.05)'"
+          onmouseout="this.style.transform = 'scale(1)'"
         >
-          💰 Finance
+          <span style="font-size: 1.25rem;">💰</span>
+           <span style="font-weight: bold; font-size: 1rem;">Finance</span>
         </button>
       </div>
 
@@ -26,9 +58,6 @@
         <FitnessLogs v-if="tab === 'fitness'" />
         <FinanceLogs v-if="tab === 'finance'" />
       </div>
-      
-      <!-- Summary dihapus -->
-      <!-- <Summary /> -->
     </div>
   </div>
 </template>
@@ -37,12 +66,9 @@
 import { ref } from "vue"
 import FitnessLogs from "./pages/FitnessLogs.vue"
 import FinanceLogs from "./pages/FinanceLogs.vue"
-// import Summary from "./components/Summary.vue" // dihapus
 
 const tab = ref("fitness")
 
-const activeTab =
-  "bg-green-600 text-white px-5 py-2 rounded-lg shadow-md font-semibold"
-const inactiveTab =
-  "bg-gray-200 text-gray-600 px-5 py-2 rounded-lg hover:bg-gray-300"
+const baseBtn =
+  "transition-all duration-300 transform hover:scale-105 px-8 py-4 rounded-xl shadow-lg border-2 flex items-center gap-3 focus:outline-none"
 </script>
