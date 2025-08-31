@@ -2,8 +2,7 @@
 WORKOUT & EXPENSE TRACKER
 
 ## 📌 Description
-Aplikasi berbasis web untuk mencatat aktivitas olahraga (Fitness) dan pengeluaran (Finance) dalam satu tempat.  
-Dengan sistem tab yang sederhana, pengguna bisa dengan mudah berpindah antara pencatatan workout dan pencatatan keuangan harian terkait pengeluaran selama melakukan workout.
+Aplikasi berbasis web untuk mencatat aktivitas olahraga (Fitness) dan pengeluaran (Finance) dalam satu tempat. Dengan sistem tab yang sederhana, pengguna bisa dengan mudah berpindah antara pencatatan workout dan pencatatan keuangan harian terkait pengeluaran selama melakukan workout.
 
 ## 🛠 Technologies Used
 - JavaScript
@@ -30,9 +29,9 @@ Dengan sistem tab yang sederhana, pengguna bisa dengan mudah berpindah antara pe
 1. Clone repositori dari GitHub:
    ```bash
    git clone https://github.com/amandailma2797-sys/fitness-and-finance-tracker.git 
-2. Install dependencies
-3. Deploy ke Vercel dengan menghubungkan repo GitHub
-4. Aplikasi langsung online dengan URL publik  
+2. Install dependencies.
+3. Deploy ke Vercel dengan menghubungkan repo GitHub.
+4. Aplikasi langsung online dengan URL publik.
 
 ## 🤖 AI Support Explanation
 Proyek ini bisa dikembangkan lebih lanjut dengan dukungan AI, seperti:  
